@@ -1,24 +1,33 @@
 {
-  "name": "ts_webpack",
+  "name": "tswebpack",
   "version": "1.0.0",
+  "main": "main.js",
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --progress",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/lodash": "^4.14.182",
+    "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.2",
     "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.2"
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.9.0"
   },
   "dependencies": {
     "@types/livereload": "^0.9.2",
     "@types/ws": "^8.5.3",
-    "lodash": "^4.17.21"
- }
+    "babel-loader": "^8.2.5",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "lodash": "^4.17.21",
+    "ol": "^6.14.1"
+  }
 }
