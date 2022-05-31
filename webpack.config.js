@@ -41,7 +41,7 @@ module.exports = {
         // main: path.resolve(__dirname, 'src', 'main.js')
 
         // 첫번째 시도
-        main : './src/main.js',
+        main : './src/main.ts',
         // test : './src/index.html',
     },
     devtool: 'inline-source-map',
@@ -81,7 +81,10 @@ module.exports = {
         static: { directory: path.resolve(__dirname) },
         compress: true, // 모든 항목에 대해 gzip압축 사용
         hot: true,      // HRM(새로 고침 안해도 변경된 모듈 자동으로 적용)
-        
+        // localhost:8080에 올리고 싶은데 올라가지 않음 ㅠㅠ
+        host: "localhost",
+        port: 8080,
+
         // 히스토리 API를 사용하는 SPA 개발시 설정. 
         // 404가 발생하면 index.html로 리다이렉트한다.
         historyApiFallback: true,
