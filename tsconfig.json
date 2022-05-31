@@ -4,10 +4,13 @@
       "noImplicitAny": true,
       "module": "es6",
       "target": "es5",
+      "sourceMap": true,
       "jsx": "react",
       "allowJs": true,
       "moduleResolution": "node",
+      // compilerOption 오류로 인한 추가
       "strict": true,
       "forceConsistentCasingInFileNames" : true
-    }
+    },
+    "files": ["index.d.ts", "livereload-tests.ts"],
   }
