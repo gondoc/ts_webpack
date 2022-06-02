@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 // SPA : Single Page Application 
@@ -41,9 +42,10 @@ module.exports = {
         // main: path.resolve(__dirname, 'src', 'main.js')
 
         // 첫번째 시도
-        main : './src/main.ts',
-        // test : './src/index.html',
+        main: './src/main.js',
+        test : './src/test.js',
     },
+    // 빌드 프로세스 정의 (번들 소스 맵 생성 방법)
     devtool: 'inline-source-map',
     module: {
         rules: [
@@ -54,17 +56,26 @@ module.exports = {
                 exclude: /node_modules/,
             },
         ],
+        rules: [
+            {
+                test: /\.css$/,
+                // 여러개의 로더를 동시에 사용할때에는 use: 를 이용한다.
+                // 뒤에서 부터 적용되어 css-loader를 먼저 처리하고 
+                // 처리된 결과물을 babel-loader로 한번 더 처리한다.
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                exclude: /node_modules/,
+            },
+        ],
     },
 
     resolve: {
-        extensions: ['.tsx', '.ts', '.js', '.html'],
+        extensions: ['.tsx', '.ts', '.js', '.html', '.css'],
     },
 
     // 웹팩 실행 및 빌드 후 결과물의 파일 경로
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        clean: true
+        path: path.resolve(__dirname, 'dist')
     },
 
     performance: {
@@ -81,15 +92,17 @@ module.exports = {
         static: { directory: path.resolve(__dirname) },
         compress: true, // 모든 항목에 대해 gzip압축 사용
         hot: true,      // HRM(새로 고침 안해도 변경된 모듈 자동으로 적용)
-        // localhost:8080에 올리고 싶은데 올라가지 않음 ㅠㅠ
-        host: "localhost",
-        port: 8080,
 
         // 히스토리 API를 사용하는 SPA 개발시 설정. 
         // 404가 발생하면 index.html로 리다이렉트한다.
         historyApiFallback: true,
     },
-    plugins: [new HtmlWebpackPlugin({
-        template: './src/index.html'
-    })],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+        }),
+        new MiniCssExtractPlugin({
+            filename:'[name].css'
+        })
+    ],
 };

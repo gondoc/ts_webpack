@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Using OpenLayers with Webpack</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" type="text/css">
-    <style>
-      html, body {
-        margin: 0;
-        height: 90%;
-      }
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 90%;
-        height: 90%;
 
-      }
-    </style>
-  <script defer src="main.bundle.js"></script></head>
-  
-  <body>
-    <div id="map">
-      <button type="button" onclick="test()">test</button>
-    </div>
-    <!-- 필요없는 코드 -->
-    <!-- <script src="dist/main.bundle.js"></script> -->
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Using OpenLayers with Webpack</title>
+  <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" type="text/css">
+  <script defer src="main.bundle.js"></script>
+  <script defer src="test.bundle.js"></script>
+  <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="map">
+    <button type="reset">reset</button>
+    <button type="button" id="goCompany" class="goCompany" name="goCompany" onclick="goCompany()">goCompany</button>
+    <button type="button" id="goHome" class="goHome" name="goHome" onclick="goHome()">goHome</button>
+  </div>
+</body>
+
 </html>
