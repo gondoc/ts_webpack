@@ -25,3 +25,18 @@
 	webpack 5점대 에서 dev server 관련 구동 이슈가 있다는 것을 확인함.
 	webpack 4점 라인으로 다운 그레이드를 시도하려 하였으나, 연관 다른 디펜전시와 충돌이 일어나는 것을 확인함. 
 	build, run 둘다 안되는 상황. 이슈 해결 중.
+
+---
+
+2206031624
+	
+	어제 localhost에 구동되지 않는 오류(지속적인 cannot get / 오류)를 해결함. 
+	경로 상의 문제였음.
+	template으로 설정한 index.html 파일이 /root 에 있었어야 했는데, 
+	/src 에 넣어두고 같이 번들링을 돌려버렸다.
+	template으로 설정했다는 것은 default view의 template 개념이었음.
+	bundling 할 필요가 없었음. 
+
+	localhost:xxxx에서 cannot get / 을 해결하고나니
+	화면에 button은 정상 출력되나 map이 출력이 되지 않는 상황임. 해결중.
+	
