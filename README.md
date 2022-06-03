@@ -44,3 +44,26 @@
 	feature 들을 만들고 컨트롤 해 볼 예정임.
 
 	추후엔 db까지 구성하여 서버단까지 같이 돌아가게 할 예정.
+
+---
+
+2206031735
+	
+	localhost:xxxx에서 cannot get / 을 해결하고나니
+	화면에 button은 정상 출력되나 map이 출력이 되지 않는 상황임. 해결중.
+
+	-> 해결함.
+	webpack.config.js 파일에 devMiddleware 설정이 잘못되어 있었음.
+	
+	devServer: {
+	...
+    devMiddleware: { publicPath: './dist' },
+	...
+	}
+	해당 devMiddleware 설정은 
+	번들된 파일을 다른 곳에서 찾으려고 하는 것을 방지하기 위함으로 
+	webpack이 깔끔하게 정리된 블로그를 보고 참조해서 한 줄 넣었는데..
+	해당 경로 설정으로 인해 오히려 번들 파일을 못찾고 있었다.
+	
+	차주엔 feature 들을 만들고 컨트롤 해 볼 예정이고
+	최종적으로는 db까지 구성하여 서버단까지 같이 돌아가게 할 예정.
