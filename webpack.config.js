@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
@@ -15,6 +14,8 @@ const path = require('path');
 //     main: './src/MainView.js'
 //   }
 module.exports = {
+    // Webpack v5 버그(Live Reload 문제) 해결
+    target: 'web',
 
     // webpack4 이상부터 개발자모드 development, 
     // 상품모드 production두가지모드를 지원한다.
@@ -28,7 +29,9 @@ module.exports = {
     // 최초 경로 entry 
     // webpack@4 or webpack@5 맞춰서 경로 지정이 다를 수 있다.
     // 혹시 경로상에 문제( 파일을 못 읽는 경우 ) 경로 앞에 / 이나 ./ 을 넣어보자.
-    entry: {
+
+
+    entry: './src/main.js',
         // 세번째 시도
         // index: {
         //     import: path.resolve(__dirname, 'src/index.html'),
@@ -42,9 +45,8 @@ module.exports = {
         // main: path.resolve(__dirname, 'src', 'main.js')
 
         // 첫번째 시도
-        main: './src/main.js',
-        test : './src/test.js',
-    },
+        
+    
     // 빌드 프로세스 정의 (번들 소스 맵 생성 방법)
     devtool: 'inline-source-map',
     module: {
@@ -69,6 +71,7 @@ module.exports = {
     },
 
     resolve: {
+        modules: ['node_modules'],
         extensions: ['.tsx', '.ts', '.js', '.html', '.css'],
     },
 
@@ -88,6 +91,15 @@ module.exports = {
         // static: {
         //     directory: path.join(__dirname, "public")
         // },
+        // Webpack v5 버그(Live Reload 문제) 해결
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+              },
+            progress: true,
+        },
+        open: true,
         devMiddleware: { publicPath: './dist' },
         static: { directory: path.resolve(__dirname) },
         compress: true, // 모든 항목에 대해 gzip압축 사용
@@ -96,13 +108,14 @@ module.exports = {
         // 히스토리 API를 사용하는 SPA 개발시 설정. 
         // 404가 발생하면 index.html로 리다이렉트한다.
         historyApiFallback: true,
+        port: 8000,
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './index.html',
         }),
         new MiniCssExtractPlugin({
-            filename:'[name].css'
-        })
+            filename: '[name].css',
+        }),
     ],
 };
