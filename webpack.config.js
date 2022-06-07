@@ -100,7 +100,6 @@ module.exports = {
             progress: true,
         },
         open: true,
-        devMiddleware: { publicPath: './dist' },
         static: { directory: path.resolve(__dirname) },
         compress: true, // 모든 항목에 대해 gzip압축 사용
         hot: true,      // HRM(새로 고침 안해도 변경된 모듈 자동으로 적용)
