@@ -1,6 +1,24 @@
 # tswebpack
 
-2206031735
+220608 10:21
+
+	openlayers map 표출 및 webpack5 라인에서 앞단 표출 및 번들링 작업 후 
+	서버 작업진행 하려 하였으나, 다음 과제 부여받음.
+
+	다음 과제 : gisDashBoard
+	기존 사내 프로젝트로 진행된 진주시 대시보드 프로젝트(퍼블리싱만 된 프로토타입)를 받아
+	앞단, 서버단 구현할 것.
+		+. gisDashBoard repository는 사내 로컬 서버.
+	
+	작업과제
+		1. openlayers map 구현 
+		2. 구현된 map 위 POI layer 신규 생성 및 표출
+		3. evtList 표출 작업 
+		...
+
+---
+
+220603 17:35
 
 	localhost:xxxx에서 cannot get / 을 해결하고나니
 	화면에 button은 정상 출력되나 map이 출력이 되지 않는 상황임. 해결중.
@@ -10,7 +28,7 @@
 	
 	devServer: {
 	...
-    devMiddleware: { publicPath: './dist' },
+		devMiddleware: { publicPath: './dist' },
 	...
 	}
 	해당 devMiddleware 설정은 
@@ -23,7 +41,7 @@
 
 ---
 
-2206031624
+220603 16:24
 
 	어제 localhost에 구동되지 않는 오류(지속적인 cannot get / 오류)를 해결함. 
 	경로 상의 문제였음.
@@ -42,7 +60,7 @@
 
 ---
 
-2206022024
+220602 20:24
 	
 	webpack5으로 번들링한 js, css, html 파일에 지도 출력.
 	좌표계 EPSG:3857 -> EPSG:4326 변경.
@@ -56,7 +74,7 @@
 
 ---
 
-2206021020
+220602 10:20
 
 	대과제 : react, typeScript 번들링 -> node.js / spring
 	npm + typeScript
